@@ -19,7 +19,7 @@ test.afterEach.always(() => {
   return testKnex.migrate.rollback()
 })
 
-test.only('Add new user | it should add a new user into the data base', (t) => {
+test.skip('Add new user | it should add a new user into the data base', (t) => {
    t.plan(1)
 
  // arrange

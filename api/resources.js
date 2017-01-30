@@ -13,6 +13,7 @@ module.exports = function(db) {
   route.post('/users/login', login)
 
   function login(req, res, next) {
+    console.log('login hit')
     const email = req.body.email
     const entered_password = req.body.password
     db.findUserByEmail(email)
