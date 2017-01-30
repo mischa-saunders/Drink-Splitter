@@ -2,6 +2,7 @@
 const React = require('react')
 const { connect } = require('react-redux')
 const { Link } = require('react-router')
+var bcrypt = require('bcryptjs')
 
 const ReactDOM = require('react-dom')
 const {TextField} = require('material-ui')
