@@ -16,6 +16,8 @@ class Login extends React.Component {
       .end((err, response) => {
         if (response.body.login){
           this.props.router.push(`users/${response.body.id}/profile`)
+          this.props.dispatch({type: 'LOGIN', payload: response.body.id
+          })
         } else  {
           alert("Wrong password or username")
         }

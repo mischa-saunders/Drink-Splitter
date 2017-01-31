@@ -1,7 +1,7 @@
 module.exports = {
 	userName: null,
 	users: {
-	},
+					},
 	amountOwed: 4635,
 	amountOwing: 1050,
 	showingPastNights: false,

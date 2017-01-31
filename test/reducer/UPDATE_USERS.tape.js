@@ -3,48 +3,36 @@ const freeze = require('deep-freeze')
 const reducer = require('../../src/reducer')
 
 test('UPDATE_USERS | the user list gets updated based on the state', t => {
-	const state = {
-		users: {
-			1: {
-				name: 'lilly'
-			}
-		}
-	}
-	freeze(state)
+  const expectedState = {
+      users : {
+        1: {id: 1, name: 'lilly'},
+        2: {id: 2, name: 'james'},
+        3: {id: 3, name: 'ana'}
+  }
+}
 
-	const expectedState = {
-		users: {
-			1: {
-				name: 'lilly'
-			},
-			2: {
-				name: 'james'
-			},
-		 	3: {
-				name: 'ana'
-			}
-		}
-	}
+const state = {users:{}}
 
-	const action = {
-		type: 'UPDATE_USERS',
-		// Duplication test? This doesn't work!
-		payload:
-		{
-			1: {
-				name: 'lilly'
-			},
-			2: {
-			name: 'james'
-			},
-			3: {
-			name: 'ana'
-			}
-		}
-	}
+  const action = {
+    type: 'UPDATE_USERS',
+    payload: [
+  {
+    "id": 1,
+    "name": "lilly"
+  },
+  {
+    "id": 2,
+    "name": "james"
+  },
+  {
+    "id": 3,
+    "name": "ana"
+  }
+]
+  }
 
-	const newState = reducer(state, action)
+const newState = reducer(state, action)
 
-	t.deepEqual(expectedState, newState)
-	t.end()
+t.deepEqual(newState, expectedState, 'should return all users as an object')
+t.end()
 })

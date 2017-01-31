@@ -6,6 +6,7 @@ const { FlatButton, RaisedButton } = require('material-ui')
 const ShowPastNights = require('./showPastNights')
 
 const UserProfile = (props) => {
+  console.log('this is profile state', props);
   const { amountOwed, amountOwing, dispatch, routeParams, users } = props
   const userName = users[routeParams.id].name
   return (
