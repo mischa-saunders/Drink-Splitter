@@ -23,6 +23,19 @@ module.exports = function (knex) {
 			return knex('users').select()
 				.where('email', email)
 				.then(users => users[0])
+		},
+
+		findNightsByUser: function(userId) {
+			return knex('users')
+					.join('users_nights', 'users.id', '=', 'users_nights.user_id')
+					.join('nights', 'users_nights.nights_id', '=', 'nights.id')
+					.where({user_id: userId})
+					.select('*')
+		},
+
+		findUsersByNights: function(nightId) {
+			return knex('nights')
+				.join('users_nights', 'nights.id', '=', 'users_nights.nights_id')
 		}
 	}
 }

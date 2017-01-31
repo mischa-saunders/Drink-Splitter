@@ -69,7 +69,7 @@ module.exports = function(db) {
 
   function post (req, res, next) {}
 
-
+db.findNightsByUser(1)
 
 
   return route;
