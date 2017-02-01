@@ -63,9 +63,8 @@ module.exports = function (state, action){
       break;
 
 		case 'UPDATE_STATE_ADMIN' :
-			console.log("action", action.payload)
-			newState.admin.totalNights = action.payload
-		break;
+			newState.allUsers = action.payload
+			break;
 
 		case 'USER_PAYING':
 			newState.currentNight.personPaying = newState.currentNight.personPaying === action.payload

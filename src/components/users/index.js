@@ -5,42 +5,52 @@ const _ = require('lodash')
 const request = require('superagent')
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table'
 
-class UsersList extends React.Component {
-  render(){
-    const { users } = this.props
 
+class UsersIndex extends React.Component {
+
+  componentWillMount(){
+    const { dispatch } = this.props
+    request.get('api/v1/admin/users')
+      .then(response => {
+        dispatch({type: 'UPDATE_STATE_ADMIN', payload: response.body})
+      })
+
+  }
+
+  render(){
+    const { allUsers } = this.props
 
     return (
 
       <Table>
-      <TableHeader>
-      <TableRow>
-      <TableHeaderColumn>ID</TableHeaderColumn>
-      <TableHeaderColumn>Name</TableHeaderColumn>
-      <TableHeaderColumn>Latest night out</TableHeaderColumn>
-      <TableHeaderColumn>Number of nights out</TableHeaderColumn>
-      <TableHeaderColumn>Total owed</TableHeaderColumn>
-      <TableHeaderColumn>Total owing</TableHeaderColumn>
-      </TableRow>
-      </TableHeader>
-      <TableBody>
-      {_.map(users, (user) => {
-        return (
+        <TableHeader>
           <TableRow>
-          <TableRowColumn>{user.id}</TableRowColumn>
-          <TableRowColumn>{user.name}</TableRowColumn>
-          <TableRowColumn>01/01/2017</TableRowColumn>
-          <TableRowColumn>10</TableRowColumn>
-          <TableRowColumn>100 $</TableRowColumn>
-          <TableRowColumn>0 $</TableRowColumn>
+            <TableHeaderColumn>ID</TableHeaderColumn>
+            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableHeaderColumn>Latest night out</TableHeaderColumn>
+            <TableHeaderColumn>Number of nights out</TableHeaderColumn>
+            <TableHeaderColumn>Total owed</TableHeaderColumn>
+            <TableHeaderColumn>Total owing</TableHeaderColumn>
           </TableRow>
-        )
-      })}
-      </TableBody>
+        </TableHeader>
+          <TableBody>
+            {_.map(allUsers, (user) => {
+              return (
+                <TableRow>
+                  <TableRowColumn>{user.id}</TableRowColumn>
+                  <TableRowColumn>{user.name}</TableRowColumn>
+                  <TableRowColumn>01/01/2017</TableRowColumn>
+                  <TableRowColumn>10</TableRowColumn>
+                  <TableRowColumn>100 $</TableRowColumn>
+                  <TableRowColumn>0 $</TableRowColumn>
+                </TableRow>
+              )
+            })}
+          </TableBody>
       </Table>
     )
 
   }
 }
 
-module.exports = connect((state) => state)(UsersList)
+module.exports = connect((state) => state)(UsersIndex)
