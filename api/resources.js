@@ -1,9 +1,11 @@
 const bcrypt = require('bcryptjs')
 const express = require("express");
+const session = require('express-session');
 const route = express.Router();
 
 
 module.exports = function(db) {
+
 
   route.get("/users", getUsers);
   route.post("/users", postNewUser);
@@ -11,7 +13,6 @@ module.exports = function(db) {
   route.get("/users_nights", getUsersNights);
   route.post("/", post);
   route.get("/admin", getAdmin)
-  route.post("/users", postNewUser);
   route.post("/users/register", confirmUniqueEmail)
   route.post('/users/login', login)
 
