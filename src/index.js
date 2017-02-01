@@ -17,6 +17,7 @@ const NightOutView = require('./components/nightsOut/view')
 const UsersIndex = require('./components/users/index')
 const NewNight = require('./components/nightsOut/new')
 const UserProfile = require('./components/users/profile')
+const AdminUsersProfile = require()
 const Home = require('./components/home')
 
 

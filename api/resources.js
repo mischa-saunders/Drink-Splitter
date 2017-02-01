@@ -28,7 +28,7 @@ module.exports = function(db) {
   }
 
   function userProfile(req, res, next) {
-    console.log('resources.js req', req.body.id);
+    console.log('resources.js req.body', req.body);
     db.findAll('users')
       .where({id: user.id})
       .then((users) => {
@@ -52,6 +52,7 @@ module.exports = function(db) {
 
 
   function getAdmin(req, res, next) {
+    console.log('req.session', req.session);
     db.countNightsByUser()
       .then((count) => {
         res.json(count)
@@ -76,7 +77,7 @@ module.exports = function(db) {
     const entered_password = req.body.password
     db.findUserByEmail(email)
     .then(user => {
-      const { name, id, password } = user[0]
+      const { name, id, password, isAdmin } = user[0]
       if (!user[0]) {
         res.json({error: 'Invalid Email/password'})
       } else {
@@ -84,6 +85,7 @@ module.exports = function(db) {
           if (response) {
             req.session.userId = id
             req.session.userName = name
+            req.session.isAdmin = isAdmin
             res.json({id: id, login: true})
           } else {
             res.json({login: false, error: 'Invalid email/Password'})

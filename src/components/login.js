@@ -23,7 +23,7 @@ class Login extends React.Component {
       .end((err, response) => {
         if (err) {
           dispatch({type: 'AUTH_ERR', payload: 'Invalid email/password'})
-        }else if(response.body.login){
+        } else if(response.body.login){
           this.props.router.push(`users/${response.body.id}/profile`)
         }else{
           dispatch({type: 'AUTH_ERR', payload: response.body.error})
