@@ -21,6 +21,13 @@ module.exports = function (db) {
   saveUninitialized: true,
   cookie: { secure: false }
   }))
+  // app.use(function(req, res, next){
+  //   if(!req.session.userId){
+  //     next()
+  //   }else{
+  //     res.send('NOPE')
+  //   }
+  // })
 
   if (app.get('env') === 'development') {
     // bundle client/index.js

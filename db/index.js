@@ -10,7 +10,8 @@ module.exports = function (knex) {
 			const formattedData = {
 				name: input.userName,
 				password: input.password,
-				email: input.email
+				email: input.email,
+				admin: false
 			}
 			return knex(table)
 			.insert(formattedData)

@@ -10,7 +10,7 @@ module.exports = function(db) {
   route.get("/nights", getNights);
   route.get("/users_nights", getUsersNights);
   route.post("/", post);
-  route.get("/admin", getAdmin)
+  route.get("/admin", getUsers)
   route.post("/users", postNewUser);
   route.post("/users/register", confirmUniqueEmail)
   route.post('/users/login', login)
@@ -63,7 +63,7 @@ module.exports = function(db) {
     const entered_password = req.body.password
     db.findUserByEmail(email)
     .then(user => {
-      const { name, id, password } = user[0]
+      const { name, id, password, admin } = user[0]
       if (!user[0]) {
         res.json({error: 'Invalid Email/password'})
       } else {
@@ -71,6 +71,7 @@ module.exports = function(db) {
           if (response) {
             req.session.userId = id
             req.session.userName = name
+            req.session.admin = admin
             res.json({id: id, login: true})
           } else {
             res.json({login: false, error: 'Invalid email/Password'})
