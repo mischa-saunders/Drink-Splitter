@@ -6,38 +6,46 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         // Inserts seed entries
         knex('users').insert(
-          {id: 1, name: 'Lee Adama',
-          email: 'leeadama@gmail.com',
-          password: 'r341h45h45ur3m8',}),
+          {id: 1, name: 'adam',
+          email: 'adam@adam.com',
+          password: '$2a$10$iRe528Fyi2Ncpz9PfjoXgeQDZOyYsl26A5b2q7EvppwgfVG/fJExG',
+          isAdmin:true,}),
         knex('users').insert(
-          {id: 2, name: 'Kara Thrace',
-          email: 'kara@gmail.com',
-          password: 'r341h45h45ur3m8',}),
+          {id: 2, name: 'becki',
+          email: 'becki@becki.com',
+          password: '$2a$10$U1M.eZ1sggIMj.617lFjQ.81gAjtQ3Xu8KnsvN2dqyBzJEdc5VQS.',
+          isAdmin:true,}),
         knex('users').insert(
-          {id: 3, name: 'Caprica Six',
-          email: 'six@gmail.com',
-          password: 'r341h45h45ur3m8',}),
+          {id: 3, name: 'cassie',
+          email: 'cassie@cassie.com',
+          password: '$2a$10$BTWGysNBx4HHPF1nvk4UiumniAhFjjCCO1inXULFGnabB9Yzk0PmO',
+          isAdmin:false,}),
         knex('users').insert(
           {id: 4,
-          name: 'William Adama',
-          email: 'willa@gmail.com',
-          password: 'r341h45h45ur3m8',}),
+          name: 'delta',
+          email: 'delta@delta.com',
+          password: '$2a$10$axZ/TWJdzqf6r8sUNfbWvO9NJrKjp7UU3IwDz9wvzLMCoc/BEqDhO',
+          isAdmin:false,}),
         knex('users').insert(
-          {id: 5, name: 'Gaius Balter',
-          email: 'gbbalter@gmail.com',
-          password: 'r341h45h45ur3m8',}),
+          {id: 5, name: 'emily',
+          email: 'emily@emily.com',
+          password: '$2a$10$FGSQ3Jzs/4gxMAHG0RnLb.Z5ruRM.T6Vu3tsYZC8FCLR2L1Tskbb6',
+          isAdmin:false,}),
         knex('users').insert(
-          {id: 6, name: 'Boomer',
-          email: 'boomdawg@gmail.com',
-          password: 'r341h45h45ur3m8',}),
+          {id: 6, name: 'fargo',
+          email: 'fargo@fargo.com',
+          password: '$2a$10$IQ9K2/LsQ7uwr1Btr3a6jex0tQ5pez6o5AwrL6.bVL26z9PW.gxI2',
+          isAdmin:false,}),
         knex('users').insert(
-          {id: 7, name: 'Laura Roslin',
-          email: 'lr@gmail.com',
-          password: 'r341h45h45ur3m8',}),
+          {id: 7, name: 'gary',
+          email: 'gary@gary.com',
+          password: '$2a$10$xptiyiL9Tstyp942FdWda.drRwSLvni1iLpSF67nDyrq1RuRn1AFO',
+          isAdmin:false,}),
         knex('users').insert(
-          {id: 8, name: 'Saul Tigh',
-          email: 'saul@gmail.com',
-          password: 'r341h45h45ur3m8',}),
+          {id: 8, name: 'harry',
+          email: 'harry@harry.com',
+          password: '$2a$10$rrlGrvCIciGQJg/PUgu9muEJ7km9.9kVe/8zYLNhBVMr/Gj5LtK7G',
+          isAdmin:false,}),
       ]);
     });
 };
